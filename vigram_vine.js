@@ -127,4 +127,71 @@ function    mousemover(e) {
     }
 };
 
-document.addEventListener('mousemove', mousemover);
+// console.log(window.location.origin)
+// document.addEventListener('mousemove', mousemover);
+
+var VigramVine = (function() {
+
+  function            isMediaBlock(node)
+  {
+      return !!node &&
+              !!node.classList &&
+              !!node.classList.contains('card');
+  }
+
+  function    setButton(video)
+  {
+    if (video.classList.contains('Vigram')) {
+
+      return;
+    }
+
+    var button = getVigramButton(video);
+    if (!button) {
+
+      return;
+    }
+
+    var node = video;
+    console.log(node);
+    while (!isMediaBlock(node) && !!node) {
+      node = node.parentNode;
+    }
+    if (!node) {
+
+      return;
+    }
+
+    console.log(node);
+    var commentNode = node.querySelector('.post-engagement');
+    console.log(commentNode);
+    commentNode.querySelector('.post-actions.with-captions').appendChild(button);
+
+
+
+    video.classList.add('Vigram');
+  }
+
+
+  function  init()
+  {
+    if (window.location.origin === "https://vine.co") {
+
+      window.addEventListener('DOMSubtreeModified', function(e) {
+
+          var medias = document.querySelectorAll('video');
+          // console.log(medias);
+          for (var k = 0; k < medias.length && k < 50; k++) {
+              setButton(medias[k]);
+          }
+      });
+    }
+  }
+
+  return {
+    init: init
+  }
+
+})();
+
+VigramVine.init();
