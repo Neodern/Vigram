@@ -61,21 +61,31 @@ function            setButton(elem)
         return;
 
     var node = elem;
-    while (node.tagName !== 'ARTICLE')
-        node = node.parentNode;
+    while (!isMediaBlock(node) && node.tagName !== 'ARTICLE')
+      node = node.parentNode;
 
     var commentNode = node.children[node.children.length - 1];
     if (!!commentNode && !commentNode.classList.contains('Vigram')) {
-      commentNode.className += " Vigram";
+      commentNode.classList.add('Vigram');
       var addCommentSection = commentNode.querySelectorAll('._jveic')[0],
           lovelyHearth = commentNode.querySelectorAll('._ebwb5._1tv0k')[0];
-        if (!!addCommentSection && !!lovelyHearth) {
-            addCommentSection.insertBefore(button, lovelyHearth);
+        if (!!addCommentSection && !!lovelyHearth && !addCommentSection.classList.contains('Vigram')) {
+          addCommentSection.classList.add('Vigram')
+          addCommentSection.insertBefore(button, lovelyHearth);
         }
+
     } else if (!!commentNode) {
+
+      var root = document.getElementById('react-root'),
+          isOverlay = !!root.hasAttribute('aria-hidden') ? root.getAttribute('aria-hidden') : false;
+      if (isOverlay != 'true')
+        return;
+
       var oldNode = commentNode.querySelectorAll('.VigramButton')[0];
       if (!oldNode)
         return;
+
+
 
       if (oldNode.href === button.href)
         return;
@@ -90,13 +100,16 @@ function            setButton(elem)
     elem.classList.add('Vigram');
 }
 
+
 /**
  *
  */
-window.addEventListener('DOMSubtreeModified', function(e) {
+if (window.location.origin === "https://www.instagram.com") {
+  window.addEventListener('DOMSubtreeModified', function(e) {
 
-    var medias = document.querySelectorAll('._jjzlb, video');
-    for (var k = 0; k < medias.length; k++) {
-        setButton(medias[k]);
-    }
-});
+      var medias = document.querySelectorAll('._jjzlb, video');
+      for (var k = 0; k < medias.length; k++) {
+          setButton(medias[k]);
+      }
+  });  
+}
