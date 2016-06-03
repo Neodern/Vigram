@@ -53,53 +53,56 @@ function            isMediaBlock(node) {
  */
 function            setButton(elem)
 {
-    if (elem.classList.contains('Vigram') && elem.offsetWidth !== 600)
+    if (elem.classList.contains('Vigram') && elem.offsetWidth !== 600) {
       return;
+    }
 
     var button = getVigramButton(elem);
-    if (!button)
-        return;
+    if (!button) {
+      return;
+    }
 
     var node = elem;
-    while (!isMediaBlock(node) && node.tagName !== 'ARTICLE')
+    while (node.tagName !== 'ARTICLE') {
       node = node.parentNode;
+    }
 
     var commentNode = node.children[node.children.length - 1];
     if (!!commentNode && !commentNode.classList.contains('Vigram')) {
       commentNode.classList.add('Vigram');
       var addCommentSection = commentNode.querySelectorAll('._jveic')[0],
           lovelyHearth = commentNode.querySelectorAll('._ebwb5._1tv0k')[0];
+
         if (!!addCommentSection && !!lovelyHearth && !addCommentSection.classList.contains('Vigram')) {
           addCommentSection.classList.add('Vigram')
           addCommentSection.insertBefore(button, lovelyHearth);
         }
-
     } else if (!!commentNode) {
 
       var root = document.getElementById('react-root'),
           isOverlay = !!root.hasAttribute('aria-hidden') ? root.getAttribute('aria-hidden') : false;
-      if (isOverlay != 'true')
+      if (isOverlay != 'true') {
+          return;
+      }
+
+      var modalCommentNode = commentNode.children[commentNode.children.length - 1];
+      var oldNode = modalCommentNode.querySelectorAll('.VigramButton')[0];
+      if (!oldNode) {
         return;
+      }
 
-      var oldNode = commentNode.querySelectorAll('.VigramButton')[0];
-      if (!oldNode)
+      if (oldNode.href === button.href) {
         return;
-
-
-
-      if (oldNode.href === button.href)
-        return;
+      }
 
       var commentNodeRef = oldNode.parentNode;
       commentNodeRef.replaceChild(button, commentNodeRef.querySelectorAll('.VigramButton')[0]);
     } else {
-
         return;
     }
 
     elem.classList.add('Vigram');
 }
-
 
 /**
  *
@@ -107,9 +110,9 @@ function            setButton(elem)
 if (window.location.origin === "https://www.instagram.com") {
   window.addEventListener('DOMSubtreeModified', function(e) {
 
-      var medias = document.querySelectorAll('._jjzlb, video');
+      var medias = document.querySelectorAll('._jjzlb:not(.Vigram), video:not(.Vigram)');
       for (var k = 0; k < medias.length; k++) {
           setButton(medias[k]);
       }
-  });  
+  });
 }
