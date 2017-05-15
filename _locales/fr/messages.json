@@ -20,7 +20,7 @@
         "message": "Vigram a été mis à jour !"
     },
     "subtitle": {
-        "message": "Vous pouvez à présent télécharger les photos et les vidéos sur Instagram et Vine."
+        "message": "Vous pouvez à présent télécharger les photos et les vidéos sur Instagram."
     },
     "content_title": {
         "message": "Si vous appréciez Vigram, vous pouvez soutenir le développeur de plusieurs manières !"
@@ -30,9 +30,6 @@
     },
     "content_list_2": {
       "message": "Partagez, parlez de cette application à vos proches !"
-    },
-    "content_list_3": {
-      "message": "Vous pouvez aussi lui faire don d'un café ou d'une bière via PayPal !"
     },
     "share_title": {
       "message": "Votre soutien est important !"

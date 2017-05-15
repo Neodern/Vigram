@@ -18,24 +18,11 @@
         <ul>
             <li i18n="content_list_1"></li>
             <li i18n="content_list_2"></li>
-            <li i18n="content_list_3"></li>
         </ul>
     </article>
     <section id="share">
         <h2 i18n="share_title"></h2>
 
-        <div id="donate-block">
-            <div id="paypal-button">
-                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                    <input type="hidden" name="cmd" value="_s-xclick">
-                    <input type="hidden" name="encrypted"
-                           value="-----BEGIN PKCS7-----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-----END PKCS7-----">
-                    <input type="image" src="https://www.paypalobjects.com/fr_XC/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !">
-                    <img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
-                </form>
-            </div>
-            <span id="donate-label" i18n="paypal"></span>
-        </div>
         <div id="follow-block">
             <div id="share-general" class="share-buttons">
                 <a href="https://twitter.com/VigramApp"><img height="50" src="medias/images/twitter.png" /></a>
@@ -44,7 +31,7 @@
         </div>
     </section>
     <footer>
-        <p>Copyright &copy; Neodern 2016</p>
+        <p>Copyright &copy; Neodern 2017</p>
     </footer>
 </body>
 <script src="i18n.js"></script>

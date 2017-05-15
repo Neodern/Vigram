@@ -20,7 +20,7 @@
         "message": "Vigram has been updated !"
     },
     "subtitle": {
-        "message": "You can now download pictures and videos from Instagram & Vine."
+        "message": "You can now download pictures and videos from Instagram."
     },
     "content": {
         "message": ""
@@ -33,9 +33,6 @@
     },
     "content_list_2": {
         "message": "Share, talk about this app to your friends"
-    },
-    "content_list_3": {
-        "message": "You can also offer him a coffee or a beer using PayPal"
     },
     "share_title": {
         "message": "Your support is important !"
