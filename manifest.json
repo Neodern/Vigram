@@ -1,7 +1,7 @@
 {
   "name": "Vigram - Instagram downloader",
   "short_name": "Vigram",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "description": "Download pictures & videos from Instagram with a single click !",
   "icons": {
     "16" : "medias/images/vigram_16.png",

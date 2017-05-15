@@ -1,7 +1,7 @@
 Vigram
 ======
 
-Vine &amp; Instagram Downloader - Chrome Extension
+Instagram Downloader - Chrome Extension
 
 
 Due to some priorities, I publish Vigram on my GitHub account. Thanks for your support.

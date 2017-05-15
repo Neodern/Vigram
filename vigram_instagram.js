@@ -2,7 +2,7 @@
  * Vigram
  * @version : 2.2
  * @author: Nicolas (@neodern) Jamet <neodern@gmail.com>
- * @about: Download pics & videos from Vine & Instagram with a single click !
+ * @about: Download pics & videos from Instagram with a single click !
  */
 
 var VigramLogo = chrome.extension.getURL("medias/images/vigram_48.png");
