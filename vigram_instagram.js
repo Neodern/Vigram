@@ -16,25 +16,22 @@ function getVigramButton(element) {
 
     var media = element.querySelector('img');
     if (!media)
-      media = element;
+        media = element;
 
     if (media.tagName !== 'IMG' && media.tagName !== 'VIDEO')
-      return null;
+        return null;
 
     var metas = {
         url: media.getAttribute('src')
     };
-    metas.name = metas.url.split("/")[4]
+    metas.name = metas.url.split("/")[ 4 ]
 
     var VigramLink = document.createElement('a');
     var VigramButton = document.createElement('span');
 
-    VigramLink.className = "VigramButton _ebwb5 _1tv0k _345gm";
+    VigramLink.className = "VigramButton";
     VigramLink.style.background = 'url(' + VigramLogo + ') no-repeat 50% 50%';
-    VigramLink.style.backgroundSize = '30px';
-    VigramLink.style.display = "block";
-    VigramLink.style.height = "50px";
-    VigramLink.style.width = "50px";
+
     VigramLink.href = metas.url;
     VigramLink.setAttribute('download', metas.name);
     VigramLink.appendChild(VigramButton);
@@ -42,61 +39,63 @@ function getVigramButton(element) {
     return VigramLink;
 }
 
-function            isMediaBlock(node) {
-    return !!node.classList.contains('ResponsiveBlock') ||
-      !!(node.classList.contains('_22yr2') && !node.parentNode.classList.contains('ResponsiveBlock'));
+function isMediaBlock(node) {
+    return node.classList.contains('ResponsiveBlock') ||
+        (node.classList.contains('_22yr2') && !node.parentNode.classList.contains('ResponsiveBlock'));
 }
 
 /**
  *
  * @param elem
  */
-function            setButton(elem)
-{
+function setButton(elem) {
     if (elem.classList.contains('Vigram') && elem.offsetWidth !== 600) {
-      return;
+        return;
     }
 
     var button = getVigramButton(elem);
     if (!button) {
-      return;
+        return;
     }
 
     var node = elem;
     while (node.tagName !== 'ARTICLE') {
-      node = node.parentNode;
+        node = node.parentNode;
     }
 
-    var commentNode = node.children[node.children.length - 1];
+    var commentNode = node.querySelectorAll("._rgrbt")[ 0 ];
     if (!!commentNode && !commentNode.classList.contains('Vigram')) {
-      commentNode.classList.add('Vigram');
-      var addCommentSection = commentNode.querySelectorAll('._jveic')[0],
-          lovelyHearth = commentNode.querySelectorAll('._ebwb5._1tv0k')[0];
-
-        if (!!addCommentSection && !!lovelyHearth && !addCommentSection.classList.contains('Vigram')) {
-          addCommentSection.classList.add('Vigram')
-          addCommentSection.insertBefore(button, lovelyHearth);
+        commentNode.classList.add('Vigram');
+        var lovelyHearth = commentNode.querySelectorAll('._soakw.coreSpriteLikeHeartOpen')[ 0 ];
+        if (lovelyHearth === undefined) {
+            lovelyHearth = commentNode.querySelectorAll('._soakw.coreSpriteLikeHeartFull')[ 0 ];
+        }
+        var parentNode = lovelyHearth.parentNode;
+        var container = parentNode.parentNode;
+        if (!!lovelyHearth && !container.classList.contains('Vigram')) {
+            container.classList.add('Vigram')
+            container.insertBefore(button, parentNode);
         }
     } else if (!!commentNode) {
 
-      var root = document.getElementById('react-root'),
-          isOverlay = !!root.hasAttribute('aria-hidden') ? root.getAttribute('aria-hidden') : false;
-      if (isOverlay != 'true') {
-          return;
-      }
+        var root = document.getElementById('react-root'),
+            isOverlay = root.hasAttribute('aria-hidden') ? root.getAttribute('aria-hidden') : false;
+        if (isOverlay != 'true') {
+            return;
+        }
 
-      var modalCommentNode = commentNode.children[commentNode.children.length - 1];
-      var oldNode = modalCommentNode.querySelectorAll('.VigramButton')[0];
-      if (!oldNode) {
-        return;
-      }
+        var modalCommentNode = commentNode.children[ commentNode.children.length - 1 ];
+        var oldNode = modalCommentNode.querySelectorAll('.VigramButton')[ 0 ];
+        if (!oldNode) {
+            return;
+        }
 
-      if (oldNode.href === button.href) {
-        return;
-      }
+        if (oldNode.href === button.href) {
+            return;
+        }
 
-      var commentNodeRef = oldNode.parentNode;
-      commentNodeRef.replaceChild(button, commentNodeRef.querySelectorAll('.VigramButton')[0]);
+        var commentNodeRef = oldNode.parentNode;
+        commentNodeRef.replaceChild(button, commentNodeRef.querySelectorAll('.VigramButton')[ 0 ]);
     } else {
         return;
     }
@@ -108,11 +107,11 @@ function            setButton(elem)
  *
  */
 if (window.location.origin === "https://www.instagram.com") {
-  window.addEventListener('DOMSubtreeModified', function(e) {
+    window.addEventListener('DOMSubtreeModified', function (e) {
 
-      var medias = document.querySelectorAll('._jjzlb:not(.Vigram), video:not(.Vigram)');
-      for (var k = 0; k < medias.length; k++) {
-          setButton(medias[k]);
-      }
-  });
+        var medias = document.querySelectorAll('._jjzlb:not(.Vigram), video:not(.Vigram)');
+        for (var k = 0; k < medias.length; k++) {
+            setButton(medias[ k ]);
+        }
+    });
 }
