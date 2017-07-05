@@ -66,10 +66,7 @@ function setButton(elem) {
     var commentNode = node.querySelectorAll("._rgrbt")[ 0 ];
     if (!!commentNode && !commentNode.classList.contains('Vigram')) {
         commentNode.classList.add('Vigram');
-        var lovelyHearth = commentNode.querySelectorAll('._soakw.coreSpriteLikeHeartOpen')[ 0 ];
-        if (lovelyHearth === undefined) {
-            lovelyHearth = commentNode.querySelectorAll('._soakw.coreSpriteLikeHeartFull')[ 0 ];
-        }
+        var lovelyHearth = commentNode.querySelectorAll('._soakw[class*=Heart]')[ 0 ];
         var parentNode = lovelyHearth.parentNode;
         var container = parentNode.parentNode;
         if (!!lovelyHearth && !container.classList.contains('Vigram')) {
