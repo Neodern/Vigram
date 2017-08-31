@@ -1,35 +1,38 @@
 {
   "name": "Vigram - Instagram downloader",
   "short_name": "Vigram",
-  "version": "2.7.1",
+  "version": "3.0.0",
   "description": "Download pictures & videos from Instagram with a single click !",
   "icons": {
-    "16" : "medias/images/vigram_16.png",
-    "48" : "medias/images/vigram_48.png",
-    "128" : "medias/images/vigram_128.png"
+    "16": "medias/images/vigram_16.png",
+    "48": "medias/images/vigram_48.png",
+    "128": "medias/images/vigram_128.png"
   },
-  "default_locale" : "en",
+  "default_locale": "en",
   "manifest_version": 2,
-
-  "content_scripts": [ {
-    "matches": [
-      "https://www.instagram.com/*"
-    ],
-    "js": [
-      "vigram_instagram.js"
-    ],
-    "css": ["medias/css/vigram.css"]
-  }],
-
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.instagram.com/*"
+      ],
+      "js": [
+        "vigram_instagram.js"
+      ],
+      "css": [
+        "medias/css/vigram.css"
+      ]
+    }
+  ],
   "background": {
     "persistent": false,
-    "scripts": ["vigram.js", "i18n.js"]
+    "scripts": [
+      "vigram.js",
+      "i18n.js"
+    ]
   },
-
   "permissions": [
     "tabs"
   ],
-
   "web_accessible_resources": [
     "medias/images/vigram_48.png",
     "medias/images/vigram_128.png"

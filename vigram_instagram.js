@@ -1,11 +1,18 @@
 /**
  * Vigram
- * @version : 2.2
+ * @version : 3.0
  * @author: Nicolas (@neodern) Jamet <neodern@gmail.com>
  * @about: Download pics & videos from Instagram with a single click !
  */
 
 var VigramLogo = chrome.extension.getURL("medias/images/vigram_48.png");
+
+var PAGE_TYPE_HP = "PAGE_TYPE_HP",
+    PAGE_TYPE_PROFILE = "PAGE_TYPE_PROFILE",
+    PAGE_TYPE_SINGLE = "PAGE_TYPE_SINGLE",
+    PAGE_TYPE_MODAL = "PAGE_TYPE_MODAL";
+
+var ARTICLE_TYPE_MULTI = "ARTICLE_TYPE_MULTI";
 
 /**
  *
@@ -13,18 +20,21 @@ var VigramLogo = chrome.extension.getURL("medias/images/vigram_48.png");
  * @returns {HTMLElement}
  */
 function getVigramButton(element) {
+    var medias = element.querySelectorAll('img,video');
+    var mediaList = Array.prototype.slice.call(medias).filter(function (item) {
+        return !(item.nodeName === "IMG" && item.height < 100);
+    });
 
-    var media = element.querySelector('img');
-    if (!media)
-        media = element;
+    if (mediaList.length !== 1) {
+        return document.createElement('span');
+    }
 
-    if (media.tagName !== 'IMG' && media.tagName !== 'VIDEO')
-        return null;
-
+    var media = mediaList[0];
     var metas = {
         url: media.getAttribute('src')
     };
-    metas.name = metas.url.split("/")[ 4 ]
+
+    metas.name = metas.url.split("/")[4];
 
     var VigramLink = document.createElement('a');
     var VigramButton = document.createElement('span');
@@ -39,76 +49,137 @@ function getVigramButton(element) {
     return VigramLink;
 }
 
-function isMediaBlock(node) {
-    return node.classList.contains('ResponsiveBlock') ||
-        (node.classList.contains('_22yr2') && !node.parentNode.classList.contains('ResponsiveBlock'));
-}
-
 /**
+ * Récupère le type de la page.
  *
- * @param elem
+ * @returns {*}
  */
-function setButton(elem) {
-    if (elem.classList.contains('Vigram') && elem.offsetWidth !== 600) {
-        return;
+function getPageType() {
+    var ogTitle = document.querySelectorAll("meta[property='og:title']"),
+        ogType = document.querySelectorAll("meta[property='og:type']"),
+        root = document.getElementById('react-root'),
+        isOverlay = root.hasAttribute('aria-hidden') ? root.getAttribute('aria-hidden') : false;
+
+    if (ogTitle.length !== 0 && ogType.length !== 0 && ogType[0].content === "profile") {
+        return isOverlay ? PAGE_TYPE_MODAL : PAGE_TYPE_PROFILE;
+    } else if (ogTitle.length !== 0 && ogType.length !== 0 && ogType[0].content === "instapp:photo") {
+        return PAGE_TYPE_SINGLE;
     }
 
-    var button = getVigramButton(elem);
-    if (!button) {
-        return;
-    }
-
-    var node = elem;
-    while (node.tagName !== 'ARTICLE') {
-        node = node.parentNode;
-    }
-
-    var commentNode = node.querySelectorAll("._rgrbt")[ 0 ];
-    if (!!commentNode && !commentNode.classList.contains('Vigram')) {
-        commentNode.classList.add('Vigram');
-        var lovelyHearth = commentNode.querySelectorAll('._soakw[class*=Heart]')[ 0 ];
-        var parentNode = lovelyHearth.parentNode;
-        var container = parentNode.parentNode;
-        if (!!lovelyHearth && !container.classList.contains('Vigram')) {
-            container.classList.add('Vigram')
-            container.insertBefore(button, parentNode);
-        }
-    } else if (!!commentNode) {
-
-        var root = document.getElementById('react-root'),
-            isOverlay = root.hasAttribute('aria-hidden') ? root.getAttribute('aria-hidden') : false;
-        if (isOverlay != 'true') {
-            return;
-        }
-
-        var modalCommentNode = commentNode.children[ commentNode.children.length - 1 ];
-        var oldNode = modalCommentNode.querySelectorAll('.VigramButton')[ 0 ];
-        if (!oldNode) {
-            return;
-        }
-
-        if (oldNode.href === button.href) {
-            return;
-        }
-
-        var commentNodeRef = oldNode.parentNode;
-        commentNodeRef.replaceChild(button, commentNodeRef.querySelectorAll('.VigramButton')[ 0 ]);
-    } else {
-        return;
-    }
-
-    elem.classList.add('Vigram');
+    return PAGE_TYPE_HP
 }
 
 /**
+ * Récupère le type du média.
+ *
+ * @param article
+ * @returns {*}
+ */
+function getArticleType(article) {
+    var isMulti = article.querySelectorAll("*[class*=Chevron]").length !== 0;
+
+    if (isMulti) {
+        Array.prototype.slice.call(article.querySelectorAll('img,video')).forEach(function (item) {
+            item.addEventListener("load", function () {
+                setButton(article);
+            });
+        });
+
+        return ARTICLE_TYPE_MULTI;
+    }
+
+    return null;
+}
+
+/**
+ * Récupère la node qui contient les commentaires d'un article.
+ *
+ * @param article
+ * @returns {NodeList}
+ */
+function getCommentNodeFromArticle(article) {
+    var commentNode = article.querySelectorAll('*[role="button"]');
+
+    commentNode = Array.prototype.slice.call(commentNode).filter(function (item) {
+        return item.href !== "javascript:;";
+    });
+
+    commentNode = commentNode[0].parentNode;
+
+    return commentNode;
+}
+
+/**
+ * Place le bouton sur l'article en fonction du "coeur" qui se trouve dans l'article.
+ *
+ * @param article
+ * @param lovelyHeart
+ */
+function setButton(article, lovelyHeart) {
+    if (!lovelyHeart) {
+        lovelyHeart = article.querySelectorAll('*[class*=Heart]')[0];
+    }
+
+    var parentNode = lovelyHeart.parentNode,
+        container = parentNode.parentNode,
+        button = getVigramButton(article);
+
+    if (!!lovelyHeart) {
+        var vigramModalButton = container.querySelectorAll(".VigramButton");
+        if (vigramModalButton.length === 0) {
+            container.insertBefore(button, parentNode);
+        } else {
+            vigramModalButton[0].href = button.href;
+        }
+    }
+}
+
+/**
+ * Permet de placer le bouton Vigram en fonction du type de page Instagram.
+ *
+ * @param article
+ */
+function vigramify(article) {
+    var pageType = getPageType(),
+        articleType = getArticleType(article);
+
+    if (article.querySelectorAll(".VigramButton").length !== 0 && (pageType !== PAGE_TYPE_MODAL && articleType !== ARTICLE_TYPE_MULTI)) {
+        return;
+    }
+
+    var commentNode, lovelyHeart;
+    switch (pageType) {
+        case PAGE_TYPE_HP:
+        case PAGE_TYPE_SINGLE:
+            commentNode = getCommentNodeFromArticle(article);
+            lovelyHeart = commentNode.querySelectorAll('*[class*=Heart]')[0];
+            setButton(article, lovelyHeart);
+            break;
+        case PAGE_TYPE_PROFILE:
+            break;
+        case PAGE_TYPE_MODAL:
+            article = document.querySelectorAll("*[role='dialog'] article");
+            if (article.length !== 1) {
+                return;
+            }
+            articleType = getArticleType(article[0]);
+            commentNode = getCommentNodeFromArticle(article[0]);
+            lovelyHeart = commentNode.querySelectorAll('*[class*=Heart]')[0];
+            setButton(article[0], lovelyHeart);
+            break;
+    }
+}
+
+/**
+ * Evenement qui detecte les modifications du DOM, on récupère toutes les nodes "article" et on les vigramify.
  *
  */
 if (window.location.origin === "https://www.instagram.com") {
     window.addEventListener('DOMSubtreeModified', function (e) {
+        var medias = e.target.querySelectorAll("article");
 
-        var medias = document.querySelectorAll('._jjzlb:not(.Vigram), video:not(.Vigram)');
-        for (var k = 0; k < medias.length; k++) {
-            setButton(medias[ k ]);
-        }
+        Array.prototype.slice.call(medias).forEach(function (item) {
+            vigramify(item);
+        });
     });
 }
