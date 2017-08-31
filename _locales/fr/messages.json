@@ -1,12 +1,4 @@
 {
-    "dl_button_pic":{
-        "message": "Télécharger cette image",
-        "description": "texte pour le bouton de téléchargement d'image."
-    },
-    "dl_button_vid":{
-        "message": "Télécharger cette vidéo",
-        "description": "text pour le bouton de téléchargement vidéo."
-    },
     "title_page": {
         "message": "Vigram installé !"
     },
@@ -33,9 +25,6 @@
     },
     "share_title": {
       "message": "Votre soutien est important !"
-    },
-    "paypal": {
-      "message": "Soutenir Vigram"
     },
     "twitter": {
       "message": "Suivez Vigram sur Twitter"

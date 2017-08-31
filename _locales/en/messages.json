@@ -1,12 +1,4 @@
 {
-    "dl_button_pic":{
-        "message": "Download this picture",
-        "description": "text for picture's download button"
-    },
-    "dl_button_vid":{
-        "message": "Download this video",
-        "description": "text for video's download button"
-    },
     "title_page": {
         "message": "Vigram installed !"
     },
@@ -22,9 +14,6 @@
     "subtitle": {
         "message": "You can now download pictures and videos from Instagram."
     },
-    "content": {
-        "message": ""
-    },
     "content_title": {
         "message": "Do you like Vigram ? Show it to the developper !"
     },
@@ -36,9 +25,6 @@
     },
     "share_title": {
         "message": "Your support is important !"
-    },
-    "paypal": {
-        "message": "Support Vigram"
     },
     "twitter": {
         "message": "Follow Vigram on Twitter"
