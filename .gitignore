@@ -1,2 +1,4 @@
 .idea
-Vigram - ChromeStore
+build/
+node_modules/
+
