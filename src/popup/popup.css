@@ -11,7 +11,7 @@ body {
 }
 
 #message {
-    width: 280px;
+    width: 300px;
     margin: 0 auto;
     font-size: 12px;
 }
@@ -23,8 +23,8 @@ img {
 }
 
 #container {
-    width: 300px;
-    height: 400px;
+    width: 320px;
+    height: 380px;
 }
 
 #download {
@@ -41,7 +41,7 @@ img {
     font-size: 16px;
     font-weight: 600;
     line-height: 32px;
-    margin: 10px auto 0;
+    margin: 0px auto 0;
     overflow: hidden;
     padding: 0 5px;
     text-align: center;
@@ -51,7 +51,7 @@ img {
     width: 290px;
 }
 
-.button a {
+a.button {
     color: white;
     text-decoration: none;
     font-size: 11px;
@@ -73,7 +73,7 @@ footer {
 
 #twitter {
     background: #3897f0;
-    width: 150px !important;
+    width: 140px !important;
     float: left;
     color: #fff;
 }
@@ -86,6 +86,7 @@ footer {
     background: white;
     width: 120px;
     border: 1px solid white;
+    margin-left: 170px;
 }
 
 #chrome-store span {
