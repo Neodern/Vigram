@@ -13,6 +13,7 @@ var PAGE_TYPE_HP = "PAGE_TYPE_HP",
     PAGE_TYPE_MODAL = "PAGE_TYPE_MODAL";
 
 var ARTICLE_TYPE_MULTI = "ARTICLE_TYPE_MULTI";
+window.vigramList = [];
 
 /**
  *
@@ -131,8 +132,62 @@ function setButton(article, lovelyHeart) {
         } else {
             vigramModalButton[0].href = button.href;
         }
+        // window.vigramList.push(button.href); // s'assurer que l'image est unique.
+        // document.dispatchEvent(new Event("build"));
+
+            chrome.runtime.sendMessage(
+                {from: 'content', subject: 'badge', nb: document.querySelectorAll(".VigramButton").length});
+
+        // chrome.tabs.sendMessage({
+        //     action: "tabs",
+        //     options: {
+        //         url: "",
+        //         filename: ""
+        //     }
+        // })
     }
 }
+
+// chrome.runtime.sendMessage({
+//     from:    'content',
+//     subject: 'showPageAction'
+// });
+
+// Listen for messages from the popup
+chrome.runtime.onMessage.addListener(function (msg, sender, response) {
+    // First, validate the message's structure
+    if ((msg.from === 'popup') && (msg.subject === 'DOMInfo')) {
+        // Collect the necessary data
+        // (For your specific requirements `document.querySelectorAll(...)`
+        //  should be equivalent to jquery's `$(...)`)
+
+        var imgNodeList = document.querySelectorAll(".VigramButton");
+        // var images = Array.prototype.slice.call(imgNodeList).filter(function (image) {
+        //     if (image.height < 100) {
+        //         return false;
+        //     }
+        //     return true;
+        // });
+
+        // console.log(images)
+        var hrefList = Array.prototype.slice.call(imgNodeList).map(function (image) {
+            // console.log(image)
+            return image.href
+        });
+
+        var domInfo = {
+            images: hrefList,
+            total: hrefList.length
+        };
+
+        console.log(domInfo)
+
+
+        // Directly respond to the sender (popup),
+        // through the specified callback */
+        response(domInfo);
+    }
+});
 
 /**
  * Permet de placer le bouton Vigram en fonction du type de page Instagram.

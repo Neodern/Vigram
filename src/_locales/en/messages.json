@@ -1,0 +1,44 @@
+{
+  "title_page": {
+    "message": "Vigram installed !"
+  },
+  "title_page_update": {
+    "message": "Vigram updated !"
+  },
+  "title": {
+    "message": "Vigram has been installed !"
+  },
+  "title_update": {
+    "message": "Vigram has been updated !"
+  },
+  "subtitle": {
+    "message": "You can now download pictures and videos from Instagram."
+  },
+  "content_title": {
+    "message": "Do you like Vigram ? Show it to the developper !"
+  },
+  "content_list_1": {
+    "message": "Follow him on twitter @vigramApp"
+  },
+  "content_list_2": {
+    "message": "Share, talk about this app to your friends"
+  },
+  "share_title": {
+    "message": "Your support is important !"
+  },
+  "twitter": {
+    "message": "Follow Vigram on Twitter"
+  },
+  "download_button_singular": {
+    "message": "Download picture"
+  },
+  "download_button_plural": {
+    "message": "Download $nb$ pictures",
+    "placeholders": {
+      "nb": {
+        "content": "$1",
+        "example": "42"
+      }
+    }
+  }
+}

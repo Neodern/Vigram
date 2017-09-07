@@ -1,37 +1,49 @@
 {
+  "manifest_version": 2,
+  "default_locale": "en",
   "name": "Vigram - Instagram downloader",
   "short_name": "Vigram",
   "version": "3.0.0",
   "description": "Download pictures & videos from Instagram with a single click !",
   "icons": {
-    "16": "medias/images/vigram_16.png",
-    "48": "medias/images/vigram_48.png",
-    "128": "medias/images/vigram_128.png"
+    "16": "images/vigram_16.png",
+    "48": "images/vigram_48.png",
+    "128": "images/vigram_128.png"
   },
-  "default_locale": "en",
-  "manifest_version": 2,
   "content_scripts": [
     {
       "matches": [
-        "https://www.instagram.com/*"
+        "*://*.instagram.com/*", "http://*/*", "https://*/*"
       ],
       "js": [
         "vigram_instagram.js"
       ],
       "css": [
         "medias/css/vigram.css"
-      ]
+      ],
+      "run_at": "document_end"
     }
   ],
   "background": {
     "persistent": false,
     "scripts": [
-      "vigram.js",
-      "i18n.js"
+      "vigram.js"
     ]
   },
+  "browser_action": {
+    "name": "Vigram",
+    "icons": [
+      "medias/images/vigram_128.png",
+      "medias/images/vigram_48.png",
+      "medias/images/vigram_16.png"
+    ],
+    "default_icon": "medias/images/vigram_128.png",
+    "default_title": "Vigram",
+    "default_popup": "popup.html"
+  },
   "permissions": [
-    "tabs"
+    "tabs",
+    "downloads"
   ],
   "web_accessible_resources": [
     "medias/images/vigram_48.png",
