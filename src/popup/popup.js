@@ -1,4 +1,10 @@
-// Update the relevant fields with the new data
+/**
+ * Vigram
+ *
+ * @author: Nicolas (@neodern) Jamet <neodern@gmail.com>
+ * @about: Download pics & videos from Instagram with a single click !
+ */
+
 function setDOMInfo(info) {
     var message = document.querySelector("#message p");
     var button = document.querySelector("#download");

@@ -1,9 +1,10 @@
 /**
  * Vigram
- * @version : 3.0
+ *
  * @author: Nicolas (@neodern) Jamet <neodern@gmail.com>
  * @about: Download pics & videos from Instagram with a single click !
  */
+
 
 var VigramLogo = chrome.extension.getURL("images/vigram_48.png");
 

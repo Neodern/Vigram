@@ -1,108 +1,36 @@
+/**
+ * Vigram
+ *
+ * @author: Nicolas (@neodern) Jamet <neodern@gmail.com>
+ * @about: Download pics & videos from Instagram with a single click !
+ */
+
 body {
-    margin: 0px;
-    background-color: #ecf0f1;
-    color: #222222;
-    font-family: 'proxima-nova', 'Helvetica Neue', Arial, Helvetica, sans-serif;
-    font-size: 16px;
-    line-height: 24px;
+    background-color: #fafafa
 }
-
-h1, h2, h3, h4, h5, h6 {
-    color: #2980b9;
+.thankyou-block {
+    margin-top: 7%
 }
-
-header {
-    background-color: #2980b9;
-    width: 100%;
-    height: 120px;
-    padding: 15px;
+.thankyou-block .icon {
+    background: url(chrome-extension://__MSG_@@extension_id__/images/vigram_128.png) no-repeat center;
+    background-size: contain;
+    height: 128px
 }
-
-header section img {
-    margin-left: auto;
-    margin-right: auto;
-    width: 80px;
-    vertical-align: baseline;
-}
-
-header section p {
-    margin-top: 10px;
+.thankyou-block .text {
     text-align: center;
-    font-size: 20px;
-    color: #f6f5f6;
+    font-size: 3em;
+    padding: 2%
 }
-
-article {
-    margin: -40px auto 20px;
-    overflow: hidden;
-    background: #fff;
-    border-radius: 5px;
-    width: 720px;
-    min-height: 100px;
-}
-
-article h1 {
-    margin-left: 5%;
-    font-size: 27px;
-    line-height: 32px;
-    margin-right: 35%;
-    color: #2980b9;
-}
-
-article p {
-    margin: 15px;
-}
-
-footer {
-    background-color: #2980b9;
-    width: 100%;
-    height: 60px;
-    position: fixed;
-    bottom: 0;
-}
-
-footer p {
+.info-block {
     text-align: center;
-    color: #f6f5f6;
+    font-size: 2em;
+    padding: 1%;
+    margin-left: 15%;
+    margin-right: 15%;
+    color: #397187
 }
 
-#share {
-    background-color: #2980B9;
-    border-radius: 5px;
-    width: 680px;
-    margin: 0 auto 80px;
-    padding: 20px;
-    text-align: center;
-    color: #f6f5f6;
-}
-
-#share h2 {
-    color: #f6f5f6;
-}
-
-#donate-block {
-    width: 49%;
+.info-block .text {
     display: inline-block;
-}
-
-#follow-block {
-    width: 49%;
-    display: inline-block;
-}
-
-#donate-block, #follow-block {
-    min-width: 250px;
-    display: inline-block;
-    vertical-align: top;
-    padding: 5px 0 5px 0;
-    text-align: center;
-}
-
-#follow-block span a {
-    color: #f6f5f6;
-    text-decoration: none;
-}
-
-.twitter-share-button {
-    margin-top: 10px;
+    vertical-align: middle
 }

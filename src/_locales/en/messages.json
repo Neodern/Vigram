@@ -40,5 +40,11 @@
         "example": "42"
       }
     }
+  },
+  "firstrun_text": {
+    "message": "Thank you for installing Instagram Downloader!"
+  },
+  "reload_text": {
+    "message": "After installing please reload Instagram page"
   }
 }

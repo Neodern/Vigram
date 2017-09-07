@@ -43,5 +43,11 @@
   },
   "popup_text": {
     "message": "Rendez-vous sur Instagram pour télécharger vos images / vidéos préférées ;)"
+  },
+  "firstrun_text": {
+    "message": "Merci d'avoir installé Vigram !"
+  },
+  "reload_text": {
+    "message": "Après l'installation, merci de rafraichir la page d'Instagram."
   }
 }
