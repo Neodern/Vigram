@@ -11,6 +11,7 @@
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^3.8.0",
+    "gulp-htmlmin": "^3.0.0",
     "gulp-imagemin": "^3.3.0",
     "gulp-jsonminify": "^1.0.0",
     "gulp-obfuscate": "^0.2.9",

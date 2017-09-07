@@ -13,13 +13,13 @@
   "content_scripts": [
     {
       "matches": [
-        "*://*.instagram.com/*", "http://*/*", "https://*/*"
+        "*://*.instagram.com/*"
       ],
       "js": [
-        "vigram_instagram.js"
+        "content_scripts/vigram_instagram.min.js"
       ],
       "css": [
-        "medias/css/vigram.css"
+        "css/vigram.min.css"
       ],
       "run_at": "document_end"
     }
@@ -27,26 +27,26 @@
   "background": {
     "persistent": false,
     "scripts": [
-      "vigram.js"
+      "background/vigram.min.js"
     ]
   },
   "browser_action": {
     "name": "Vigram",
     "icons": [
-      "medias/images/vigram_128.png",
-      "medias/images/vigram_48.png",
-      "medias/images/vigram_16.png"
+      "images/vigram_128.png",
+      "images/vigram_48.png",
+      "images/vigram_16.png"
     ],
-    "default_icon": "medias/images/vigram_128.png",
+    "default_icon": "images/vigram_128.png",
     "default_title": "Vigram",
-    "default_popup": "popup.html"
+    "default_popup": "popup/popup.html"
   },
   "permissions": [
     "tabs",
     "downloads"
   ],
   "web_accessible_resources": [
-    "medias/images/vigram_48.png",
-    "medias/images/vigram_128.png"
+    "images/vigram_48.png",
+    "images/vigram_128.png"
   ]
 }

@@ -5,7 +5,7 @@
  * @about: Download pics & videos from Instagram with a single click !
  */
 
-var VigramLogo = chrome.extension.getURL("medias/images/vigram_48.png");
+var VigramLogo = chrome.extension.getURL("images/vigram_48.png");
 
 var PAGE_TYPE_HP = "PAGE_TYPE_HP",
     PAGE_TYPE_PROFILE = "PAGE_TYPE_PROFILE",

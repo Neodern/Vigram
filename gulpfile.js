@@ -7,6 +7,7 @@ var rename = require('gulp-rename');
 var imagemin = require('gulp-imagemin');
 var del = require('del');
 var jsonminify = require('gulp-jsonminify');
+var htmlmin = require('gulp-htmlmin');
 
 var config = {
     js: {
@@ -15,6 +16,10 @@ var config = {
     },
     css: {
         src: 'src/**/*.css',
+        dest: 'build'
+    },
+    html: {
+        src: 'src/**/*.html',
         dest: 'build'
     },
     images: {
@@ -46,6 +51,9 @@ var js = function () {
             compact: true,
             sourceMap: true
         }))
+        .pipe(rename({
+            suffix: '.min'
+        }))
         .pipe(gulp.dest(config.js.dest));
 };
 
@@ -58,10 +66,17 @@ var css = function () {
         .pipe(gulp.dest(config.css.dest))
 };
 
+
 var images = function () {
     return gulp.src(config.images.src)
         .pipe(imagemin({optimizationLevel: 5}))
         .pipe(gulp.dest(config.images.dest));
+};
+
+var html = function () {
+    return gulp.src(config.html.src)
+        .pipe(htmlmin({collapseWhitespace: true}))
+        .pipe(gulp.dest(config.html.dest));
 };
 
 var json = function () {
@@ -82,6 +97,9 @@ gulp.task('js-watch', js);
 gulp.task('css', ['clean'], css);
 gulp.task('css-watch', css);
 
+gulp.task('html', ['clean'], html);
+gulp.task('html-watch', html);
+
 gulp.task('images', ['clean'], images);
 gulp.task('images-watch', images);
 
@@ -94,9 +112,10 @@ gulp.task('locales-watch', locales);
 gulp.task('watch', function () {
     gulp.watch(config.js.src, ['js-watch']);
     gulp.watch(config.css.src, ['css-watch']);
+    gulp.watch(config.html.src, ['html-watch']);
     gulp.watch(config.images.src, ['images-watch']);
     gulp.watch(config.json.src, ['json-watch']);
     gulp.watch(config.locales.src, ['locales-watch']);
 });
 
-gulp.task('default', ['clean', 'watch', 'js', 'css', 'images', 'json', 'locales']);
+gulp.task('default', ['clean', 'watch', 'js', 'css', 'html', 'images', 'json', 'locales']);
