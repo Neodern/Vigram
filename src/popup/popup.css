@@ -5,7 +5,6 @@
  * @about: Download pics & videos from Instagram with a single click !
  */
 
-
 body {
     background-color: #fafafa;
 }
@@ -30,7 +29,7 @@ img {
 #download {
     display: none;
     background: #3897f0;
-    color:white;
+    color: white;
 }
 
 .button {
@@ -49,6 +48,10 @@ img {
     white-space: nowrap;
     vertical-align: baseline;
     width: 290px;
+}
+
+#switch_tab {
+    display: none;
 }
 
 a.button {

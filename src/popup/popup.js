@@ -8,6 +8,7 @@
 function setDOMInfo(info) {
     var message = document.querySelector("#message p");
     var button = document.querySelector("#download");
+
     if (!info || info.total === 0) {
         message.innerText = chrome.i18n.getMessage("popup_text");
         return;

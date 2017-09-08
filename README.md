@@ -7,6 +7,8 @@ More informations here :  [Vigram on Chrome Store](https://chrome.google.com/web
 
 ### Todo
 
+- Explore page, bouton Vigram
+- Explore page, bouton dlall
 - Page de profil, bouton Vigram
 - Page de profil, bouton dlall
 - Rajouter un bot ? autolike / follow ?

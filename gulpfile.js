@@ -1,6 +1,5 @@
 var gulp = require('gulp');
 var uglify = require('gulp-uglify');
-var obfuscate = require('gulp-obfuscate');
 var javascriptObfuscator = require('gulp-javascript-obfuscator');
 var cleanCSS = require('gulp-clean-css');
 var rename = require('gulp-rename');
@@ -47,12 +46,12 @@ gulp.task('clean', function (cb) {
 var js = function () {
     return gulp.src(config.js.src)
         .pipe(uglify())
+        .pipe(rename({
+            suffix: '.min'
+        }))
         .pipe(javascriptObfuscator({
             compact: true,
             sourceMap: true
-        }))
-        .pipe(rename({
-            suffix: '.min'
         }))
         .pipe(gulp.dest(config.js.dest));
 };

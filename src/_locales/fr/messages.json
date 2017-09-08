@@ -1,33 +1,9 @@
 {
-  "title_page": {
-    "message": "Vigram installé !"
+  "firstrun_text": {
+    "message": "Merci d'avoir installé Vigram !"
   },
-  "title_page_update": {
-    "message": "Vigram mis à jour !"
-  },
-  "title": {
-    "message": "Vigram a été installé !"
-  },
-  "title_update": {
-    "message": "Vigram a été mis à jour !"
-  },
-  "subtitle": {
-    "message": "Vous pouvez à présent télécharger les photos et les vidéos sur Instagram."
-  },
-  "content_title": {
-    "message": "Si vous appréciez Vigram, vous pouvez soutenir le développeur de plusieurs manières !"
-  },
-  "content_list_1": {
-    "message": "Suivez le sur twitter @vigramApp !"
-  },
-  "content_list_2": {
-    "message": "Partagez, parlez de cette application à vos proches !"
-  },
-  "share_title": {
-    "message": "Votre soutien est important !"
-  },
-  "twitter": {
-    "message": "Suivez Vigram sur Twitter"
+  "reload_text": {
+    "message": "Après l'installation, merci de rafraichir la page d'Instagram."
   },
   "download_button_singular": {
     "message": "Télécharger l'image"
@@ -44,10 +20,10 @@
   "popup_text": {
     "message": "Rendez-vous sur Instagram pour télécharger vos images / vidéos préférées ;)"
   },
-  "firstrun_text": {
-    "message": "Merci d'avoir installé Vigram !"
+  "rate_vigram": {
+    "message": "Noter Vigram"
   },
-  "reload_text": {
-    "message": "Après l'installation, merci de rafraichir la page d'Instagram."
+  "follow_vigram": {
+    "message": "Suivre @VigramApp"
   }
 }
