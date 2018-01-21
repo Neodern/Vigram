@@ -1,0 +1,29 @@
+{
+  "firstrun_text": {
+    "message": "Merci d'avoir installé Vigram !"
+  },
+  "reload_text": {
+    "message": "Après l'installation, merci de rafraichir la page d'Instagram."
+  },
+  "download_button_singular": {
+    "message": "Télécharger l'image"
+  },
+  "download_button_plural": {
+    "message": "Télécharger les $nb$ images",
+    "placeholders": {
+      "nb": {
+        "content": "$1",
+        "example": "42"
+      }
+    }
+  },
+  "popup_text": {
+    "message": "Rendez-vous sur Instagram pour télécharger vos images / vidéos préférées ;)"
+  },
+  "rate_vigram": {
+    "message": "Noter Vigram"
+  },
+  "follow_vigram": {
+    "message": "Suivre @VigramApp"
+  }
+}

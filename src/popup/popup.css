@@ -1,0 +1,98 @@
+/**
+ * Vigram
+ *
+ * @author: Nicolas (@neodern) Jamet <neodern@gmail.com>
+ * @about: Download pics & videos from Instagram with a single click !
+ */
+
+body {
+    background-color: #fafafa;
+}
+
+#message {
+    width: 300px;
+    margin: 0 auto;
+    font-size: 12px;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#container {
+    width: 320px;
+    height: 380px;
+}
+
+#download {
+    display: none;
+    background: #3897f0;
+    color: white;
+}
+
+.button {
+    text-decoration: none;
+    border-radius: 3px;
+    border: 1px solid #3897f0;
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 32px;
+    margin: 0px auto 0;
+    overflow: hidden;
+    padding: 0 5px;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: baseline;
+    width: 290px;
+}
+
+#switch_tab {
+    display: none;
+}
+
+a.button {
+    color: white;
+    text-decoration: none;
+    font-size: 11px;
+}
+
+a img {
+    float: left;
+}
+
+footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: #efefef;
+    text-align: center;
+}
+
+#twitter {
+    background: #3897f0;
+    width: 140px !important;
+    float: left;
+    color: #fff;
+}
+
+#twitter img {
+    margin: 9px 2px;
+}
+
+#chrome-store {
+    background: white;
+    width: 120px;
+    border: 1px solid white;
+    margin-left: 170px;
+}
+
+#chrome-store span {
+    text-decoration: none;
+    color: #222222;
+}

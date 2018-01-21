@@ -1,0 +1,26 @@
+{
+  "firstrun_text": {
+    "message": "Thank you for installing Instagram Downloader!"
+  },
+  "reload_text": {
+    "message": "After installing please reload Instagram page"
+  },
+  "download_button_singular": {
+    "message": "Download picture"
+  },
+  "download_button_plural": {
+    "message": "Download $nb$ pictures",
+    "placeholders": {
+      "nb": {
+        "content": "$1",
+        "example": "42"
+      }
+    }
+  },
+  "rate_vigram": {
+    "message": "Rate Vigram"
+  },
+  "follow_vigram": {
+    "message": "Follow @VigramApp"
+  }
+}

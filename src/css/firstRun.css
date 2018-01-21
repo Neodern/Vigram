@@ -1,0 +1,36 @@
+/**
+ * Vigram
+ *
+ * @author: Nicolas (@neodern) Jamet <neodern@gmail.com>
+ * @about: Download pics & videos from Instagram with a single click !
+ */
+
+body {
+    background-color: #fafafa
+}
+.thankyou-block {
+    margin-top: 7%
+}
+.thankyou-block .icon {
+    background: url(chrome-extension://__MSG_@@extension_id__/images/vigram_128.png) no-repeat center;
+    background-size: contain;
+    height: 128px
+}
+.thankyou-block .text {
+    text-align: center;
+    font-size: 3em;
+    padding: 2%
+}
+.info-block {
+    text-align: center;
+    font-size: 2em;
+    padding: 1%;
+    margin-left: 15%;
+    margin-right: 15%;
+    color: #397187
+}
+
+.info-block .text {
+    display: inline-block;
+    vertical-align: middle
+}
