@@ -45,14 +45,14 @@ gulp.task('clean', function (cb) {
 
 var js = function () {
     return gulp.src(config.js.src)
-        .pipe(uglify())
+        // .pipe(uglify())
         .pipe(rename({
             suffix: '.min'
         }))
-        .pipe(javascriptObfuscator({
-            compact: true,
-            sourceMap: true
-        }))
+        // .pipe(javascriptObfuscator({
+        //     compact: true,
+        //     sourceMap: true
+        // }))
         .pipe(gulp.dest(config.js.dest));
 };
 
